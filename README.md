@@ -1,11 +1,8 @@
 # 🔐 SecureBoost – Privacy Preserving Machine Learning
 
-==============================================================================
-PROJECT TITLE: Breaking Data Silos: Privacy-Preserving Credit Risk Analysis
-               using Federated SecureBoost & Homomorphic Encryption (CKKS)
-AUTHORS:       Samyak Shriram Gedam, Rohit Kumar Sah, Anusha Hegde H
-INSTITUTION:   National Institute of Technology Karnataka (NITK)
-==============================================================================
+### PROJECT TITLE: Breaking Data Silos: Privacy-Preserving Credit Risk Analysis using Federated SecureBoost & Homomorphic Encryption (CKKS)
+### AUTHORS:       Samyak Shriram Gedam
+### INSTITUTION:   National Institute of Technology Karnataka (NITK)
 
 ---
 
@@ -28,7 +25,7 @@ perform secure gradient aggregation, ensuring zero data leakage.
 - `experiments/` → Model outputs and evaluation logs
 - `research/` → Paper summaries and theory references
 - `documentation/` → LaTeX source, report, presentation
-- `README.md` → 
+- `README.md`
 
 ---
 
@@ -55,8 +52,9 @@ perform secure gradient aggregation, ensuring zero data leakage.
 2. Install dependencies
 3. Run experiments from `src/`
 
-# PREREQUISITES
-------------------------------------------------------------------------------
+---
+
+### PREREQUISITES
 To run this project on a standalone machine, you need:
 
 1. Operating System: 
@@ -68,25 +66,26 @@ To run this project on a standalone machine, you need:
    - Python 3.9 or 3.10 is recommended. 
    - (Newer versions like 3.12 might have conflicts with PySyft/TenSEAL).
 
-# INSTALLATION INSTRUCTIONS
-------------------------------------------------------------------------------
+---
+
+### INSTALLATION INSTRUCTIONS
 It is highly recommended to use a Virtual Environment to avoid library conflicts.
 
-STEP 1: Create a Virtual Environment
+- STEP 1: Create a Virtual Environment
    Open your terminal/command prompt and run:
    $ python -m venv venv
 
-STEP 2: Activate the Environment
+- STEP 2: Activate the Environment
    - Windows:
      $ venv\Scripts\activate
    - Linux/Mac:
      $ source venv/bin/activate
 
-STEP 3: Install System Dependencies (Linux Only)
+- STEP 3: Install System Dependencies (Linux Only)
    If you are on Linux, you need C++ compilers for the encryption libraries:
    $ sudo apt-get install cmake build-essential libgmp-dev
 
-STEP 4: Install Python Libraries
+- STEP 4: Install Python Libraries
    Run the following command to install all required packages:
    
    $ pip install numpy pandas scikit-learn xgboost imbalanced-learn jupyter
@@ -96,20 +95,22 @@ STEP 4: Install Python Libraries
 
    (Note: TenSEAL and PySyft versions are pinned to ensure compatibility).
 
-# DATASET SETUP
-------------------------------------------------------------------------------
+---
+
+### DATASET SETUP
 The project uses the "Statlog (German Credit Data)" dataset.
 
 1. Download the dataset from the UCI Machine Learning Repository or Kaggle.
-   Link: https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data
+   [Link](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data)
    
 2. Ensure you have the CSV file named "german_credit_data.csv" (or as referenced
    in the notebooks).
 
 3. Place the CSV file in the SAME directory as the Jupyter Notebooks.
 
-# HOW TO RUN THE PROJECT
-------------------------------------------------------------------------------
+---
+
+### HOW TO RUN THE PROJECT
 Launch Jupyter Notebook by running:
    $ jupyter notebook
 
@@ -134,8 +135,9 @@ experiments:
     - Run these to view the benchmarks for computational latency.
     - CAUTION: Encryption benchmarks can take time (minutes) to run on CPUs.
 
-# TROUBLESHOOTING
-------------------------------------------------------------------------------
+---
+
+### TROUBLESHOOTING
 Issue 1: "ModuleNotFoundError: No module named 'tenseal'"
    - Solution: Ensure you activated your virtual environment before launching
      Jupyter Notebook.
@@ -149,14 +151,12 @@ Issue 3: Kernel crashes during training
      less than 8GB RAM, try reducing the 'n_estimators' (number of trees)
      in the XGBoost configuration inside the notebook.
 
-==============================================================================
-
 ---
 
 ## 🎓 Academic Context
 
-Course: CS809 – Seminar 
-Type: Research-Oriented Project  
+- Course: CS809 – Seminar 
+- Type: Research-Oriented Project  
 
 ---
 
