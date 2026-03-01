@@ -1,167 +1,250 @@
-# 🔐 SecureBoost – Privacy Preserving Machine Learning
+# 🔐 SecureBoost – Privacy-Preserving Credit Risk Analysis
 
-### PROJECT TITLE: Breaking Data Silos: Privacy-Preserving Credit Risk Analysis using Federated SecureBoost & Homomorphic Encryption (CKKS)
-### AUTHORS:       Samyak Shriram Gedam
-### INSTITUTION:   National Institute of Technology Karnataka (NITK)
+## Breaking Data Silos: Privacy-Preserving Credit Risk Analysis  
+### using Federated SecureBoost & CKKS Homomorphic Encryption
+
+**Author:** Samyak Shriram Gedam  
+**Institution:** National Institute of Technology Karnataka (NITK)  
+**Course:** CS809 – Seminar  
 
 ---
 
 ## 📌 Overview
 
-This project implements a privacy-preserving machine learning framework for
-Credit Risk Analysis. It simulates a "Vertical Federated Learning" (VFL)
-scenario where a Bank (holding labels) and a Fintech company (holding features)
-collaborate to train an XGBoost model without sharing raw customer data.
+SecureBoost is a research-oriented implementation of **Privacy-Preserving Machine Learning (PPML)** for Credit Risk Analysis.
 
-We utilize the CKKS Homomorphic Encryption scheme (via TenSEAL/PyFhel) to
-perform secure gradient aggregation, ensuring zero data leakage.
+This project simulates a **Vertical Federated Learning (VFL)** setup where:
+
+- 🏦 A **Bank (Host)** holds customer credit labels  
+- 💳 A **Fintech Company (Guest)** holds complementary customer features  
+
+Both parties collaboratively train an **XGBoost-based SecureBoost model** without sharing raw data.
+
+To ensure privacy, we use the **CKKS Homomorphic Encryption scheme** (via TenSEAL & PyFhel) to perform encrypted gradient aggregation.
+
+✔ No raw feature exchange  
+✔ No label leakage  
+✔ Fully encrypted gradient computation  
+✔ Secure collaborative training  
+
+---
+
+## 🧠 Core Concepts Implemented
+
+- Vertical Federated Learning (VFL)
+- SecureBoost Architecture
+- Homomorphic Encryption (CKKS)
+- Encrypted Gradient Aggregation
+- Privacy-Preserving Credit Risk Classification
+- Performance vs Privacy Trade-off Analysis
 
 ---
 
 ## 🏗 Repository Structure
 
-- `src/` → Core implementation code
-- `data/` → Dataset
-- `experiments/` → Model outputs and evaluation logs
-- `research/` → Paper summaries and theory references
-- `documentation/` → LaTeX source, report, presentation
-- `README.md`
+```
+SecureBoost/
+│
+├── src/                    # Core implementation
+├── data/                   # Dataset
+├── experiments/            # Model outputs & logs
+├── research/               # Paper summaries & notes
+├── documentation/          # Report (LaTeX) & Presentation
+└── README.md
+```
 
 ---
 
-## 🎯 Objectives
+## 📊 Dataset
 
-- Understand privacy-preserving ML architecture
-- Study secure computation techniques
-- Experiment with secure model training approaches
+**Dataset Used:** Statlog (German Credit Data)
 
----
+UCI Repository:  
+https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data
 
-## 🔐 Focus Areas
+### Dataset Setup
 
-- SecureBoost Architecture
-- Encrypted Model Training
-- Homomorphic Encryption Concepts
-- Secure Data Handling
+1. Download the dataset.
+2. Convert to CSV format (if required).
+3. Rename the file as:
 
----
+```
+german_credit_data.csv
+```
 
-## 📊 Reproducibility
-
-1. Clone repository
-2. Install dependencies
-3. Run experiments from `src/`
+4. Place it inside the project directory (same folder as notebooks).
 
 ---
 
-### PREREQUISITES
-To run this project on a standalone machine, you need:
+## 💻 System Requirements
 
-1. Operating System: 
-   - Linux (Ubuntu 20.04+ recommended) OR
-   - macOS OR
-   - Windows 10/11 (Requires "C++ Build Tools" installed for encryption libs)
+### Operating System
+- Linux (Ubuntu 20.04+ Recommended)
+- macOS
+- Windows 10/11 (Requires Visual Studio C++ Build Tools)
 
-2. Python Version: 
-   - Python 3.9 or 3.10 is recommended. 
-   - (Newer versions like 3.12 might have conflicts with PySyft/TenSEAL).
+### Python
+- Python 3.9 or 3.10 (Recommended)
+- Avoid Python 3.12 due to compatibility issues
 
----
-
-### INSTALLATION INSTRUCTIONS
-It is highly recommended to use a Virtual Environment to avoid library conflicts.
-
-- STEP 1: Create a Virtual Environment
-   Open your terminal/command prompt and run:
-   $ python -m venv venv
-
-- STEP 2: Activate the Environment
-   - Windows:
-     $ venv\Scripts\activate
-   - Linux/Mac:
-     $ source venv/bin/activate
-
-- STEP 3: Install System Dependencies (Linux Only)
-   If you are on Linux, you need C++ compilers for the encryption libraries:
-   $ sudo apt-get install cmake build-essential libgmp-dev
-
-- STEP 4: Install Python Libraries
-   Run the following command to install all required packages:
-   
-   $ pip install numpy pandas scikit-learn xgboost imbalanced-learn jupyter
-   $ pip install tenseal==0.3.16 
-   $ pip install syft==0.8.5
-   $ pip install pyfhel
-
-   (Note: TenSEAL and PySyft versions are pinned to ensure compatibility).
+### Hardware
+- Minimum 8GB RAM recommended
+- Encryption experiments are CPU-intensive
 
 ---
 
-### DATASET SETUP
-The project uses the "Statlog (German Credit Data)" dataset.
+## ⚙️ Installation Instructions
 
-1. Download the dataset from the UCI Machine Learning Repository or Kaggle.
-   [Link](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data)
-   
-2. Ensure you have the CSV file named "german_credit_data.csv" (or as referenced
-   in the notebooks).
+⚠️ Use a Virtual Environment to prevent dependency conflicts.
 
-3. Place the CSV file in the SAME directory as the Jupyter Notebooks.
+### Step 1 — Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Step 2 — Activate Environment
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+```bash
+source venv/bin/activate
+```
+
+### Step 3 — Install System Dependencies (Linux Only)
+
+```bash
+sudo apt-get update
+sudo apt-get install cmake build-essential libgmp-dev
+```
+
+### Step 4 — Install Python Dependencies
+
+```bash
+pip install numpy pandas scikit-learn xgboost imbalanced-learn jupyter
+pip install tenseal==0.3.16
+pip install syft==0.8.5
+pip install pyfhel
+```
+
+Versions are pinned to ensure compatibility.
 
 ---
 
-### HOW TO RUN THE PROJECT
-Launch Jupyter Notebook by running:
-   $ jupyter notebook
+## 🚀 How to Run the Project
 
-You will see 5 notebooks. Run them in the following order to replicate our
-experiments:
+Launch Jupyter Notebook:
 
-1.  "1.VFL + HE 2 Party.ipynb" (PRIMARY DEMO)
-    - This is the main implementation.
-    - It simulates 1 Host (Bank) and 1 Guest (Fintech).
-    - It trains the SecureBoost model and outputs the ROC/AUC score.
-    - Run all cells to see the privacy-preserving training in action.
+```bash
+jupyter notebook
+```
 
-2.  "2. Parties Comparison.ipynb" (SCALABILITY TEST)
-    - Run this to see what happens when data is split among 4 parties.
-    - Demonstrates that accuracy remains stable even with more fragmentation.
+Run notebooks in the following order:
 
-3.  "3. Hyperparameters.ipynb"
-    - Run this if you want to see how we tuned the XGBoost parameters
-      (learning rate, max depth, etc.) for this dataset.
+### 1️⃣ 1.VFL + HE 2 Party.ipynb (Primary Demo)
 
-4.  "4.Performance_Overhead_Analysis.ipynb" & "5.Encryption Time.ipynb"
-    - Run these to view the benchmarks for computational latency.
-    - CAUTION: Encryption benchmarks can take time (minutes) to run on CPUs.
+- Simulates 2-party VFL
+- SecureBoost training with CKKS encryption
+- Outputs ROC-AUC score
+- Full encrypted gradient workflow
+
+### 2️⃣ 2.Parties Comparison.ipynb (Scalability Test)
+
+- Splits dataset across 4 parties
+- Tests performance stability
+
+### 3️⃣ 3.Hyperparameters.ipynb
+
+- Learning rate tuning
+- Max depth tuning
+- Tree count experiments
+
+### 4️⃣ 4.Performance_Overhead_Analysis.ipynb
+
+- Measures computational latency
+- Benchmarks encryption overhead
+
+### 5️⃣ 5.Encryption_Time.ipynb
+
+- Detailed encryption timing metrics
+
+⚠️ Encryption benchmarks may take several minutes to execute.
 
 ---
 
-### TROUBLESHOOTING
-Issue 1: "ModuleNotFoundError: No module named 'tenseal'"
-   - Solution: Ensure you activated your virtual environment before launching
-     Jupyter Notebook.
+## 📈 Experimental Focus
 
-Issue 2: "ERROR: Could not build wheels for tenseal" (On Windows)
-   - Solution: You need to install "Visual Studio Build Tools" with the
-     "Desktop development with C++" workload checked.
+| Component | Objective |
+|-----------|-----------|
+| Accuracy | Validate model performance under encryption |
+| Scalability | Evaluate multi-party splitting |
+| Latency | Measure encryption/decryption time |
+| Resource Usage | Monitor CPU and RAM overhead |
 
-Issue 3: Kernel crashes during training
-   - Solution: Homomorphic Encryption uses a lot of RAM. If your machine has
-     less than 8GB RAM, try reducing the 'n_estimators' (number of trees)
-     in the XGBoost configuration inside the notebook.
+---
+
+## 🔐 Privacy Architecture Summary
+
+1. Data is vertically split between parties.
+2. Gradients are encrypted using CKKS.
+3. Aggregation is performed in encrypted space.
+4. Only the authorized host decrypts results.
+5. Raw features and labels are never exchanged.
+
+This ensures:
+- Zero raw data exposure
+- Secure collaborative model training
+- Practical PPML deployment feasibility
+
+---
+
+## 🛠 Troubleshooting
+
+### ❌ ModuleNotFoundError: tenseal
+Ensure the virtual environment is activated before launching Jupyter.
+
+### ❌ Could not build wheels for tenseal (Windows)
+Install:
+- Visual Studio Build Tools
+- Select “Desktop development with C++”
+
+### ❌ Kernel Crashes / High RAM Usage
+- Reduce `n_estimators`
+- Use smaller CKKS parameters
+- Close other memory-intensive programs
 
 ---
 
 ## 🎓 Academic Context
 
-- Course: CS809 – Seminar 
-- Type: Research-Oriented Project  
+- Course: CS809 – Seminar
+- Program: M.Tech – Computer Science
+- Institution: National Institute of Technology Karnataka
+
+This project demonstrates a practical implementation of SecureBoost with CKKS encryption for real-world credit risk analysis.
+
+---
+
+## 🚀 Future Work
+
+- Multi-party production-scale deployment
+- GPU-accelerated homomorphic encryption
+- Integration with banking APIs
+- Differential Privacy augmentation
+- Optimized secure aggregation protocols
 
 ---
 
 ## 👨‍💻 Author
 
-Samyak Gedam  
-M.Tech – Computer Science
-National Institute of Technology Surathkal, Karnataka.
+Samyak Shriram Gedam  
+M.Tech – Computer Science  
+National Institute of Technology Karnataka  
+
+---
+
+⭐ If you found this work useful, consider starring the repository.
